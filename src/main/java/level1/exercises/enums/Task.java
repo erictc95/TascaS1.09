@@ -8,7 +8,7 @@ public class Task {
         this.level = level;
     }
 
-    public String printTgetTaskPriorityMessage() {
+    public String getTaskPriorityMessage() {
         switch (level) {
             case LOW:
                 return level.name() + " --> Try Harder!";
@@ -19,5 +19,12 @@ public class Task {
             default:
                 return level.name() + "There is no level defined";
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "level=" + level +
+                '}';
     }
 }
