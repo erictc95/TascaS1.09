@@ -17,7 +17,6 @@ public class DayMain {
         String colorLevel = input.toUpperCase();
 
         try {
-
             Task task3 = new Task(Level.valueOf(colorLevel));
             System.out.println(task3.getTaskPriorityMessage());
         } catch (IllegalArgumentException e) {
