@@ -11,6 +11,10 @@ public record Person(String name, int age) {
     public String getNameInUpperCase() {
         return name.toUpperCase();
     }
+
+    public boolean isAdult() {
+        return age > 18;
+    }
 }
 
 
