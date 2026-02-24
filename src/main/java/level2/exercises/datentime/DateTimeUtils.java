@@ -1,9 +1,14 @@
 package level2.exercises.datentime;
 
-import java.time.*;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.Duration;
+import java.time.format.DateTimeFormatter;
 
 public class DateTimeUtils {
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
     private DateTimeUtils(){
     }
@@ -27,4 +32,13 @@ public class DateTimeUtils {
     public static Duration calculateDurationDifference(LocalDateTime init, LocalDateTime fin) {
         return Duration.between(init, fin);
     }
+
+    public static String formatDateTime(LocalDateTime toFormatDateTime) {
+        return toFormatDateTime.format(DATE_TIME_FORMATTER);
+    }
+
+    public static boolean isBeforeToday(LocalDate date) {
+        return date.isBefore(LocalDate.now());
+    }
+
 }
