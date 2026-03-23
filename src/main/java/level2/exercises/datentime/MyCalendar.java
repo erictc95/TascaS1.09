@@ -1,12 +1,11 @@
 package level2.exercises.datentime;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MyCalendar {
-    private List<LocalDateTime> appointments;
+    private final List<LocalDateTime> appointments;
 
     public MyCalendar() {
         this.appointments = new ArrayList<>();
@@ -17,17 +16,12 @@ public class MyCalendar {
     }
 
     public List<LocalDateTime> getAppointments() {
-        return appointments;
+        return new ArrayList<>(appointments);
     }
 
     public List<LocalDateTime> filterFutureAppointments() {
-        LocalDateTime now = LocalDateTime.now();
-        List<LocalDateTime> futureAppointments = new ArrayList<>();
-        for (LocalDateTime date : appointments) {
-            if (date.isAfter(now)) {
-                futureAppointments.add(date);
-            }
-        }
-        return futureAppointments;
+        return appointments.stream()
+                .filter(date -> date.isAfter(LocalDateTime.now()))
+                .toList();
     }
 }
