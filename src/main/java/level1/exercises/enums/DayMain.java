@@ -1,9 +1,35 @@
 package level1.exercises.enums;
 
+import static level1.exercises.enums.DayChecker.workingOrWeekend;
+
 public class DayMain {
 
     public static void main(String[] args) {
-        DayService.runExamples();
-        TaskService.runExamples();
+        workingOrWeekend(Day.FRIDAY);
+        workingOrWeekend(Day.SATURDAY);
+
+
+        Task task = new Task(Level.HIGH);
+        System.out.println(task.getTaskPriorityMessage());
+
+
+        System.out.println(Level.MEDIUM.getColor());
+
+
+        Task task2 = new Task(Level.valueOf("LOW"));
+        System.out.println(task2.getTaskPriorityMessage());
+
+
+        createTaskFromString("low");
+    }
+
+    public static void createTaskFromString(String input) {
+        try {
+            Level level = Level.valueOf(input.toUpperCase());
+            Task task = new Task(level);
+            System.out.println(task.getTaskPriorityMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("The level provided is not valid.");
+        }
     }
 }
